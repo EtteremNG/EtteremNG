@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="hu-HU">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Felhasználó kézikönyv</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.innerWidth > 992) {
+
+                document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
+
+                    everyitem.addEventListener('mouseover', function (e) {
+
+                        let el_link = this.querySelector('a[data-bs-toggle]');
+
+                        if (el_link != null) {
+                            let nextEl = el_link.nextElementSibling;
+                            el_link.classList.add('show');
+                            nextEl.classList.add('show');
+                        }
+
+                    });
+                    everyitem.addEventListener('mouseleave', function (e) {
+                        let el_link = this.querySelector('a[data-bs-toggle]');
+
+                        if (el_link != null) {
+                            let nextEl = el_link.nextElementSibling;
+                            el_link.classList.remove('show');
+                            nextEl.classList.remove('show');
+                        }
+                    })
+                });
+            }
+        });
+        function copyrightTimer() {
+            const idieiEv = new Date();
+            document.body.style.maxWidth=window.innerWidth-200;
+            document.getElementById("cpr").innerHTML = `${idieiEv.getFullYear()} Copyright: `
+        }
+        //on mouseoveer functuin átad hogy melyik képet és mire és kész
+        function kepmutat(mire, melyiket) {
+            document.getElementById(`${melyiket}`).src = "src/img/" + mire;
+            //$(`${melyiket}`).attr("src", "src/img/" + mire).fadeIn(300);
+        }
+
+        function kepvissza(mire, melyiket) {
+            document.getElementById(`${melyiket}`).src = "src/img/" + mire;
+        }
+    </script>
+
+    <style>
+body{
+    caret-color: transparent;
+}
+
+        .leirasContent li::marker,
+        .foresz {
+            font-size: 36px;
+        }
+
+        .leirasContent{
+            width: 99%;
+        }
+
+        .leirasContent li ol li::marker,
+        .kisresz {
+            color: red;
+            font-size: 24px;
+        }
+
+        .leirasContent li ul li::marker {
+            color: gray;
+        }
+
+        .leirasContent li::marker,
+        .foresz,
+        .fontos {
+            color: darkred;
+        }
+
+        p {
+            padding-left: 10px;
+        }
+
+        .contentUl li,
+        p,
+        img {
+            transition: 0.3s;
+        }
+
+        .foresz:hover,
+        .kisresz:hover,
+        .contentUl li:hover,
+        img:hover,
+        p:hover {
+            border-right: 3px solid lightgray;
+            border-bottom: 3px solid lightgray;
+            box-shadow: 4px 4px 10px 3px lightgray;
+        }
+
+        .foresz:hover {
+            font-size: 3em;
+        }
+
+        .kisresz:hover {
+            font-size: 2em;
+        }
+
+        p:hover,
+        .contentUl li:hover {
+            font-size: 1.5em;
+        }
+
+        .hibaUzenetek {
+            color: lightcoral;
+            padding-bottom: 15px;
+            list-style-type: circle;
+        }
+
+        img {
+            max-height: 500px;
+            max-width: 800px;
+        }
+
+        img:hover {
+            transform: scaleX(1.3) scaleY(1.3);
+        }
+
+        .leirasContent li {
+            padding-top: 25px;
+            margin-left: 40px;
+        }
+        .leirasContent li p{
+            max-width: fit-content;
+        }
+
+        .fontos {
+            list-style-position: inside;
+        }
+
+        .fontos,
+        .nullException,
+        a {
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 35px;
+        }
+
+        a {
+            color: darkblue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body onload="copyrightTimer()">
+    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="../devdocs/html/index.html">Fejlesztői kézikönyv</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="alta" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Általános kezelő felületi ismeretek
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#altalanosKezeloFeluletiIsmeretek">Általános kezelő
+                                    felületi ismeretek</a></li>
+                            <li><a class="dropdown-item" href="#hardwareIgeny">Hardware igény</a></li>
+                            <li><a class="dropdown-item" href="#aProgramFelhasznalasiCeljaEsTeruletei">A program
+                                    felhasználási célja és területei </a></li>
+                            <li><a class="dropdown-item" href="#nevjegy">Névjegy</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            A foglalás felvétele
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#aFoglalasFelvetele">A foglalás felvétele</a></li>
+                            <li><a class="dropdown-item" href="#aFoglalasPanelFelepiteseEsHasznalata">A panel felépítése
+                                    és
+                                    használata
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="#lehetsegesHibaUzenetek">Lehetséges hiba üzenetek</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Foglalás lemondás
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#foglalasLemondas">Foglalás lemondás</a></li>
+                            <li><a class="dropdown-item" href="#aLemondasPanelFelepiteseEsHasznalata">A panel felépítése
+                                    és
+                                    használata
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            statisztika
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#statisztika">Statisztika</a></li>
+                            <li><a class="dropdown-item" href="#aPanelFelepitese">A panel felépítése</a></li>
+                            <li><a class="dropdown-item" href="#statisztikaErtelmezese">statisztika értelmezése</a></li>
+                            <li><a class="dropdown-item" href="#felhasznalasiFormak">felhasználási formák</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Asztal térkép
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#asztalTerkep">Asztal térkép</a></li>
+                            <li><a class="dropdown-item" href="#aPanelFelepiteseEsErtelmezese">A panel felépítése és
+                                    értelmezése</a></li>
+                            <li><a class="dropdown-item" href="#felhasznalasiFormak">felhasználási formák</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ol class="leirasContent">
+        <li>
+            <p id="altalanosKezeloFeluletiIsmeretek" class="foresz ">Általános kezelő felületi ismeretek</p>
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="img-fluid mx-auto d-block" src="src/img/altalanosKezeloiFelulet.png"
+                        title="Az általános kezelő felület">
+                </div>
+                <div class="col-md-10">
+                    <p>A program elsősorban egérrel történő vezérlésre lett tervezve, de billentyűzettel is
+                        vezérelhető, viszont elsősorban az egér használatát javasoljuk.</p>
+                    <p>A vezérlő gombok képeket nem tartalmaznak, a nevük leírja, hogy milyen felületre visznek.</p>
+                    <p>A főpanel gombjai a nem sötét szürke panelbe betöltik a megfelelő felületet. A fő panel része még
+                        egy óra, ami a pontos időt mutatja.</p>
+                    <p>A kilépés gomb megnyomásakor van még lehetőség visszavonni a kilépési szándékot</p>
+                    <img src="src/img/kilepesFelulet.png" title='"Biztosan ki akar lépni?" felület' class="img-fluid">
+                </div>
+            </div>
+            <ol>
+                <li>
+                    <p id="hardwareIgeny" class="kisresz ">Hardware igény</p>
+                    <p>A program hardware igénye alacsony, bármely gépen tud futni a program, amely windows 7 vagy attól
+                        újabb rendszert futtat és rendelkezik legalább a <a
+                            href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472">.NET Framework
+                            4.7.2</a>-es verziójával.</p>
+                </li>
+                <li>
+                    <p id="aProgramFelhasznalasiCeljaEsTeruletei" class="kisresz ">A program felhasználási célja és
+                        területei</p>
+                    <p>A program egy étterem asztalfoglalását lebonyolító rendszernek készült, amely képes kezelni
+                        új foglalásokat, illetve képes kezelni a már meglévőket. Képes a foglalások helyzetéről
+                        statisztikát kiállítani egy bizonyos időszakot figyelembe véve (minimum 1 teljes nap). A program
+                        képes még a jelenlegi asztal térképet is megjeleníteni. Az asztal térképről bővebben a <a
+                            href="#asztalTerkep">5-ös</a> részben</p>
+                </li>
+                <li>
+                    <p id="nevjegy" class="kisresz">Névjegy</p>
+                    <p>A program névjegye tartalmazza a licencet, illetve a felhasznált technológiákat és ikonokat.</p>
+                    <img class="container-fluid  mx-auto d-block" src="src/img/nevjegyFelulet.png"
+                        title="A névjegy felület">
+                </li>
+            </ol>
+        </li>
+        <li>
+            <p id="aFoglalasFelvetele" class="foresz ">A foglalás felvétele</p>
+            <p>A foglalás felvétel során szükséges néhány adat a vendégtől, amelyeket egy dolgozó visz fel a gépbe, amit
+                a program kezel innentől. A foglalás asztalok foglalására értendő, így ezen a felületen előre lehet
+                lefoglalni asztalokat, ha azok még nem foglaltak.</p>
+            <ol>
+                <li>
+                    <p id="aFoglalasPanelFelepiteseEsHasznalata" class="kisresz ">A panel felépítése és használata</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="img-fluid mx-auto d-block" src="src/img/foglalas/foglalasFelvetelFelulet.png"
+                                title='A "Foglalás felvétele" felület' id="foglalasFelvetelKep">
+                        </div>
+                        <div class="col-md-6">
+                            <p>A panel egy világosabb témát követ, hogy láthatóan elkülönüljön a fő kezelő felülettől.
+                            </p>
+                            <p>A panel 6 fő elemet tartamaz:</p>
+                            <ul style="list-style-type: circle;" class="contentUl">
+                                <li onmouseenter='kepmutat("foglalas/foglalasFelvetelFeluletVendegNeve.png","foglalasFelvetelKep")'
+                                    onmouseleave='kepvissza("foglalas/foglalasFelvetelFelulet.png","foglalasFelvetelKep")'>
+                                    A „Vendég neve” után lévő szöveg dobozba kell írni az asztalt lefoglaló személy
+                                    nevét vagy amilyen néven szeretné leadni a foglalást.</li>
+                                <ul>
+                                    <li class="fontos">Fontos, hogy a vendég emlékezzen erre a névre!</li>
+                                </ul>
+                                <li onmouseenter='kepmutat("foglalas/foglalasFelvetelFeluletFoglalasKezdete.png","foglalasFelvetelKep")'
+                                    onmouseleave='kepvissza("foglalas/foglalasFelvetelFelulet.png","foglalasFelvetelKep")'>
+                                    A „Foglalás kezdete” részben kell megadni a dátumot a foglaláshoz, illetve, hogy
+                                    hány órától szeretné a vendég a foglalt asztalt/asztalokat elfoglalni. A program
+                                    jelzi, ha rossz az időpont a „Rögzítés” gomb megnyomásakor.</li>
+                                <li onmouseenter='kepmutat("foglalas/foglalasFelvetelFeluletFoglalasVege.png","foglalasFelvetelKep")'
+                                    onmouseleave='kepvissza("foglalas/foglalasFelvetelFelulet.png","foglalasFelvetelKep")'>
+                                    A „Foglalás vége” után kell megadni, hogy meddig szeretné a vendég a foglalt
+                                    asztalt/asztalokat. Ha az itt megadott időpont hamarabb vagy ugyanakkor van, mint a
+                                    foglalás kezdete akkor a program a „Rögzítés” gomb megnyomásakor jelzi.</li>
+                                <li onmouseenter='kepmutat("foglalas/foglalasFelvetelFeluletSzekekSzama.png","foglalasFelvetelKep")'
+                                    onmouseleave='kepvissza("foglalas/foglalasFelvetelFelulet.png","foglalasFelvetelKep")'>
+                                    A „Székek száma” sorba a foglalás során szükséges székek számát kell beírni, a mező
+                                    csak számokat fogad el.</li>
+                                <li onmouseenter='kepmutat("foglalas/foglalasFelvetelFeluletFoglalasTipusa.png","foglalasFelvetelKep")'
+                                    onmouseleave='kepvissza("foglalas/foglalasFelvetelFelulet.png","foglalasFelvetelKep")'>
+                                    A „Foglalás típusa” egy legördülő menü, ahol két lehetőség van: „Beltéri” és
+                                    „Kültéri” ez az asztal helyét adja meg hogy a vendég hova szeretné a foglalását.
+                                </li>
+                                <li onmouseenter='kepmutat("foglalas/foglalasFelvetelFeluletRogzites.png","foglalasFelvetelKep")'
+                                    onmouseleave='kepvissza("foglalas/foglalasFelvetelFelulet.png","foglalasFelvetelKep")'>
+                                    A „Rögzítés” gomb megnyomásakor a program ellenőrzi, hogy helyesek-e a foglaláshoz
+                                    szükséges adatok, ha igen akkor felveszi a foglalások közé, ha valami hiba van
+                                    akkor közli a felhasználóval hiba üzenet formában.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p id="lehetsegesHibaUzenetek" class="kisresz ">Lehetséges hiba üzenetek</p>
+                    <p>
+                        A hiba üzenetek a foglalást felvivő személy számára fontos vissza jelzések, hogy valamit
+                        elgépelt
+                        vagy nem adott meg egyáltalán. A következők a lehetséges hiba üzentetek:
+                    </p>
+                    <ul class="hibaUzenetek contentUl">
+                        <li>„A székek száma nincs megadva!”</li>
+                        <li>„A székek száma nem lehet kevesebb mint 1!”</li>
+                        <li>„Az asztal típusa nincs kiválasztva!”</li>
+                        <li>„A név mező nem lehet üres!”</li>
+                        <li>„A foglalás vége nem lehet korábbi időpont, mint a kezdete!”</li>
+                        <li>„A kezdet dátum az étterem nyitvatartási idején kívül van!”</li>
+                        <li>„A vég dátum az étterem nyitvatartási idején kívül van!”</li>
+                    </ul>
+                    <p>
+                        A hiba üzeneteket elmondják, hogy milyen hiba lépett fel. A hiba üzenet piros színben jelenik
+                        meg és
+                        a „Hiba történt” szöveg előzi meg.
+                    </p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <p id="foglalasLemondas" class="foresz ">Foglalás lemondás</p>
+            <p>A foglalás lemondásához szintén kell egy két adat a vendégtől, amivel megbizonyosodhatunk, hogy tényleg
+                ő-e az, aki leadta a foglalást. Ha lemondanak egy foglalást akkor azt nem lehet már visszavonni csak
+                újra
+                lefoglalni az asztalokat amikor már lehet máshova lesz csak hely.</p>
+            <ol>
+                <li>
+                    <p id="aLemondasPanelFelepiteseEsHasznalata" class="kisresz ">A panel felépítése és használata</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="src/img/lemondas/foglalasLemondasFelulet.png"
+                                title='A "Foglalás lelmondása" panel' class="img-fluid mx-auto d-block"
+                                id="foglalasLemondasKep">
+                        </div>
+                        <div class="col-md-6">
+                            <p>A panel itt is egy világosabb külsőt használ, mint a fő panel viszont kevesebb mezővel.
+                            </p>
+                            <p>A panel 3 fő elemet tartalmaz:</p>
+                            <ul style="list-style-type: circle;" class="contentUl">
+                                <li onmouseenter='kepmutat("lemondas/foglalasLemondasFeluletVendegNeve.png","foglalasLemondasKep")'
+                                    onmouseleave='kepvissza("lemondas/foglalasLemondasFelulet.png","foglalasLemondasKep")'>
+                                    A „Vendég neve” után lévő szöveg dobozba kell írni a nevet amire le lett adva a
+                                    törölni kívánt foglalás.</li>
+                                <ul>
+                                    <li class="fontos">Fontos, hogy pontos nevet adjunk meg különben nem törlődőik a
+                                        rendelés!</li>
+                                </ul>
+                                <li onmouseenter='kepmutat("lemondas/foglalasLemondasFeluletFoglalasIdopont.png","foglalasLemondasKep")'
+                                    onmouseleave='kepvissza("lemondas/foglalasLemondasFelulet.png","foglalasLemondasKep")'>
+                                    A „Foglalás kezdete” részben kell megadni a dátumot amikorra lett leadva a törlendő
+                                    foglalás.</li>
+                                <ul>
+                                    <li class="fontos">Fontos, hogy a pontos dátum legyen különben nem törlődik a
+                                        rendelés!</li>
+                                </ul>
+                                <li onmouseenter='kepmutat("lemondas/foglalasLemondasFeluletLemondasGomb.png","foglalasLemondasKep")'
+                                    onmouseleave='kepvissza("lemondas/foglalasLemondasFelulet.png","foglalasLemondasKep")'>
+                                    A „Lemondás” gomb megnyomásakor a program, ha van ilyen foglalás törli a
+                                    rendszerből.</li>
+                                <ul>
+                                    <li class="fontos">Fontos, hogy egyből törlődik a rendelés, nincs rákérdezés!</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <p id="statisztika" class="foresz ">Statisztika</p>
+            <p>A statisztika egy étterem életében fontos, hisz ezáltal lehet megtudni, hogy mikor mennyi foglalás volt,
+                mennyit tudtak teljesíteni, mikor kéne több szék mikor elég kevesebb. A statisztika egy dolgozót
+                annyira nem hozhat lázba viszont egy felsőbb beosztású embert annál inkább.</p>
+            <ol>
+                <li>
+                    <p id="aPanelFelepitese" class="kisresz ">A panel felépítése</p>
+                    <p>A panel egyszerű felépítésű és letisztult, semmi fölösleges dolgot nem tartalmaz. </p>
+                    <p onmouseenter='kepmutat("statisztika/statisztikaFeluletDatumok.png","statisztikaKep")'
+                        onmouseleave='kepvissza("statisztika/statisztikaFelulet.png","statisztikaKep")'>
+                        A „Statisztika kezdete” és „Statisztika vége” mellett lévő mezőkbe kell beírni, hogy melyik
+                        kettő
+                        dátum közötti statisztikát szeretnénk látni, viszont fontos, hogy a vége dátum vagy ungyanakkor
+                        vagy később legyen mint a kezdeti dátum.</p>
+                    <p onmouseenter='kepmutat("statisztika/statisztikaFeluletSzamolasGomb.png","statisztikaKep")'
+                        onmouseleave='kepvissza("statisztika/statisztikaFelulet.png","statisztikaKep")'>
+                        A „Számolás” gomb megnyomására kiszámítja a statisztikát és az alatta lévő fehér mezőbe kiírja
+                        őket.</p>
+                    <img src="src/img/statisztika/statisztikaFelulet.png" title='A "Statiztika" panel'
+                        class="img-fluid mx-auto d-block" id="statisztikaKep">
+                </li>
+                <li>
+                    <p id="statisztikaErtelmezese" class="kisresz ">Statisztika értelmezése</p>
+                    <p>A statisztika számolt része 3 nagyobb részre van osztva és ezen a 3 három részen belül vannak az
+                        oda tartozó statisztikai elemek kiírva. A három fő rész a következő:</p>
+                    <ul class="contentUl">
+                        <li>„Beltéri” ide íródnak a beltérire kért foglalások statisztikái a kiválasztott időpontból.
+                        </li>
+                        <li>„Kültéri” ide íródnak a kültérire kért foglalások statisztikái a kiválasztott időpontból.
+                        </li>
+                        <li>„Általános” ide íródnak azok a statisztikai adatok, amelyek egyik helyhez sem tartoznak.
+                        </li>
+                    </ul>
+                    <p>Az elnevezések magukért beszélnek.</p>
+                </li>
+                <li>
+                    <p id="felhasznalasiFormak" class="kisresz ">Felhasználási formák</p>
+                    <p>A statisztika felhasználási formái sok félék lehetnek. A legvalószínűbb az, hogy üzlet
+                        tulajdonosa szeretné látni, hogy mikor, hogy megy az üzlete, melyik hónapok gyengébben vagy épp
+                        erősebbek, mikor kellhet extra személyzet mikor nem. A statisztikából kiderülhet, hogy érdemes-e
+                        egyáltalán kinti asztalokat tartani vagy azokat senki nem szereti, ez főleg az őszi és tavaszi
+                        időszakra értendő, hisz télen senki nem szeret kint ülni. Egy statisztika meg tudja mutatni azt
+                        is, hogy mennyi foglalást nem tudtak teljesíteni, ami egy jel lehet arra, hogy több helyet kéne
+                        valahogy biztosítani a vendégek számára.</p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <p id="asztalTerkep" class="foresz">Asztal térkép</p>
+            <p>Az asztal térkép funkció a személyzet számára egy hasznos információ arról, hogy jelenleg melyik asztal
+                foglalt.</p>
+            <ol>
+                <li>
+                    <p id="aPanelFelepiteseEsErtelmezese" class="kisresz ">A panel felépítése és értelmezése</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="src/img/asztalTerkepFelulet.png" title='Az "Asztal foglalás panel"'
+                                class="img-fluid mx-auto d-block">
+                        </div>
+                        <div class="col-md-8">
+                            <p>A felépítése nem tartalmaz semmilyen gombot se beviteli mezőt, az egész felület csak
+                                információt közöl, hisz az adott időpontot mutatja.
+                            </p>
+                            <p>A panel két részre van osztva, a „Benti” és a „Kinti” részekre amikor elkülönítik a két
+                                hely asztalait. Az „Azonosító” oszlopba az asztalok azonosítói kerülnek növekvő
+                                sorrendbe. Az „Állapot” részben lehet olvasni, hogy épp szabad vagy foglalt-e az asztal.
+                                Az „Összetolva” oszlop írja, hogy az adott asztal össze van-e tolva másikkal, ha
+                                nincs akkor a „Nem” szöveg jelenik meg, ha igen akkor meg az asztalok azonosítója,
+                                amikkel össze van tolva.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                </div>
+                </div>
+                <li>
+                    <p id="felhasznalasiFormak" class="kisresz ">Felhasználási formák</p>
+                    <p>A dolgozókat segíti, hogy mennyire van telt ház éppen, mennyire kell kapkodni vagy épp biztosra
+                        menni, hisz a kapkodás során sok minden félre mehet. A vezetőség láthatja azt is, hogy adott
+                        órában hol vannak szívesebben az emberek.</p>
+                </li>
+            </ol>
+        </li>
+    </ol>
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3">
+            <span id="cpr"></span>
+            <span class="nullException">NullException</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js "
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN "
+        crossorigin="anonymous "></script>
+</body>
+
+</html>
