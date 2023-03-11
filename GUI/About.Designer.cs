@@ -53,6 +53,7 @@
             this.licenseInformation.Name = "licenseInformation";
             this.licenseInformation.ReadOnly = true;
             this.licenseInformation.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.licenseInformation.ShortcutsEnabled = false;
             this.licenseInformation.Size = new System.Drawing.Size(802, 446);
             this.licenseInformation.TabIndex = 2;
             this.licenseInformation.Text = resources.GetString("licenseInformation.Text");

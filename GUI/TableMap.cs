@@ -15,7 +15,7 @@ namespace EtteremNG.GUI
         }
 
         /// <summary>Updates the data shown on the table view to match the current state.</summary>
-        private void UpdateTableView()
+        public void UpdateTableView()
         {
             indoorReservations.Rows.Clear();
             outdoorReservations.Rows.Clear();
@@ -48,15 +48,6 @@ namespace EtteremNG.GUI
                     }
                 }
             }
-        }
-
-
-        /// <summary>Requests an update of the table map when the page is first loaded.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void OnLoad(object sender, EventArgs e)
-        {
-            UpdateTableView();
         }
     }
 }

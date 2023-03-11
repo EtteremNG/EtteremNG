@@ -54,6 +54,7 @@ namespace EtteremNG.GUI
                     StatisticsPage.BringToFront();
                     break;
                 case "Asztal térkép":
+                    TableMapPage.UpdateTableView();
                     TableMapPage.BringToFront();
                     break;
                 case "Névjegy":

@@ -53,6 +53,9 @@ namespace EtteremNG.Core.Utilities
 
         private static bool CheckTimeCollision(DateTime endTime, DateTime startTime)
         {
+            if (endTime.Day != startTime.Day) return false;
+
+
             if (endTime.Ticks == startTime.Ticks)
             {
                 return true;

@@ -96,6 +96,7 @@
             // StatisticsView
             // 
             this.StatisticsView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.StatisticsView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.StatisticsView.Location = new System.Drawing.Point(0, 131);
             this.StatisticsView.Name = "StatisticsView";
             this.StatisticsView.Size = new System.Drawing.Size(822, 400);

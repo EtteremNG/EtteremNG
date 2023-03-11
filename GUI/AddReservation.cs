@@ -102,7 +102,7 @@ namespace EtteremNG.GUI
                     statusLabel.Font = new Font("Bookman Old Style", 21, FontStyle.Regular);
                     statusLabel.Text = "A foglalás rögzítve lett!";
                     File.AppendAllText("foglalasok.txt", $"{reservation}{Environment.NewLine}");
-                    new Thread(() =>
+                    new Thread(() =>    
                     {
                         Thread.Sleep(5000);
                         statusLabel.BeginInvoke((MethodInvoker)delegate

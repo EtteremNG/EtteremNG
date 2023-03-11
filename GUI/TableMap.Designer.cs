@@ -166,7 +166,6 @@
             this.Controls.Add(this.indoorReservationsContainer);
             this.Name = "TableMap";
             this.Size = new System.Drawing.Size(822, 531);
-            this.Load += new System.EventHandler(this.OnLoad);
             this.outdoorReservationsContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.outdoorReservations)).EndInit();
             this.indoorReservationsContainer.ResumeLayout(false);

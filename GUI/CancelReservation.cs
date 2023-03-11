@@ -30,7 +30,7 @@ namespace EtteremNG.GUI
             if (!reservations.Any())
             {
                 statusLabel.ForeColor = Color.Red;
-                statusLabel.Text = "Hiba történt:\nNem található foglalás evvel az adatokkal!";
+                statusLabel.Text = "Hiba történt:\nNem található foglalás ezzel az adatokkal!";
             }
             else
             {
